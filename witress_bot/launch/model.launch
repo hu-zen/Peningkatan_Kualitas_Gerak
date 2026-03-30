@@ -1,0 +1,17 @@
+<launch>
+  <arg name="xacro_file" default="$(find witress_bot)/description/robot.urdf.xacro"/>
+  <arg name="urdf_file" default="$(find witress_bot)/description/robot.urdf"/>
+  
+  <!-- <exec command="rosrun xacro xacro $(arg xacro_file) -o $(arg urdf_file)" unless="$(file-exists $(arg urdf_file))"/> -->
+  
+  <param name="robot_description" textfile="$(arg urdf_file)" />
+
+  <param name="robot_description" command="cat $(arg urdf_file)"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="true"/>
+  </node>
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find witress_bot)/config/model.rviz"/>
+</launch>
