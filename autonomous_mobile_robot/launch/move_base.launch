@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- 
+<launch>
+
+ <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find autonomus_mobile_robot)/config/move_base_params.yaml" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+  </node>
+
+</launch>  -->
+
+<launch>
+  <!-- Arguments -->
+  <arg name="cmd_vel_topic" default="/cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <arg name="move_forward_only" default="false"/>
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find autonomus_mobile_robot)/config/dwa_local_planner_params.yaml" command="load" />
+    <param name="recovery_behavior_enabled" value="true"/>
+    <param name="clearing_rotation_allowed" value="true"/>	
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
+  </node>
+</launch>
