@@ -1,0 +1,34 @@
+map_update_interval: 2.0     # Interval diperlama agar CPU tidak overload dengan partikel banyak
+maxUrange: 9.0               # Tetap pertahankan jarak jauh
+sigma: 0.05
+kernelSize: 1
+lstep: 0.05
+astep: 0.05
+iterations: 5
+lsigma: 0.075
+ogain: 3.0
+lskip: 1                     # Skip 1 beam untuk meringankan beban komputasi
+minimumScore: 30             # TURUNKAN sedikit (sebelumnya 50). 30 cukup untuk filter noise tapi tetap mau mapping.
+
+# --- BAGIAN PENTING UNTUK MENGATASI DOUBLE MAP ---
+srr: 0.5                     # Error rotasi akibat rotasi (Dinaikkan drastis agar toleransi error tinggi)
+srt: 0.5                     # Error rotasi akibat translasi
+str: 0.5                     # Error translasi akibat rotasi
+stt: 0.5                     # Error translasi akibat translasi
+
+linearUpdate: 0.5            # Jangan update tiap 20cm, tapi tiap 50cm.
+angularUpdate: 0.25          # Update tiap 0.25 rad (sekitar 15 derajat). 
+                             # Update terlalu sering dengan odom kasar justru menumpuk error kecil.
+temporalUpdate: -1.0         # MATIKAN update waktu. Biarkan update hanya berdasarkan gerakan jarak.
+resampleThreshold: 0.5
+particles: 120               # NAIKKAN jumlah partikel (biar tebakan posisi lebih banyak)
+
+xmin: -50.0
+ymin: -50.0
+xmax: 50.0
+ymax: 50.0
+delta: 0.05
+llsamplerange: 0.01
+llsamplestep: 0.01
+lasamplerange: 0.005
+lasamplestep: 0.005

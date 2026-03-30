@@ -1,0 +1,52 @@
+# RTAB-Map core parameters
+Rtabmap/DetectionRate: 1.0
+Rtabmap/TimeThr: 700
+Rtabmap/MemoryThr: 0
+Rtabmap/StatisticLogsSaved: true
+Rtabmap/DatabasePath: ~/.ros/rtabmap.db
+
+# Odometry
+Odom/Strategy: 0  # Visual odometry
+Odom/ResetCountdown: 0
+Odom/WaitForTransform: true
+Odom/FrameId: base_link
+Odom/PublishTF: true
+Odom/GuessMotion: true
+
+# Grid map
+Grid/RangeMax: 8.0
+Grid/RangeMin: 0.3
+Grid/CellSize: 0.05
+Grid/NormalsSegmentation: true
+Grid/Sensor: 1           # 1 = 3D occupancy grid
+Grid/FromDepth: true
+GridGlobal/MaxSize: 400
+GridGlobal/MinSize: 100
+
+# SLAM behavior
+Mem/IncrementalMemory: true
+Mem/InitWMWithAllNodes: false
+Mem/NotLinkedNodesKept: false
+Mem/ReduceGraph: true
+RGBD/NeighborLinkRefining: true
+RGBD/OptimizeFromGraphEnd: true
+RGBD/AngularUpdate: 0.05
+RGBD/LinearUpdate: 0.05
+Optimizer/Strategy: 1
+Optimizer/Slam2D: true
+Reg/Strategy: 1
+RGBD/LocalLoopDetectionTime: false
+RGBD/LoopClosureReextractFeatures: true
+
+# Output publishing
+Grid/MaxGroundAngle: 45.0
+Grid/FlatObstacleDetected: true
+Grid/3D: false
+GridGlobal/MinSize: 50
+GridGlobal/MaxSize: 2000
+GridGlobal/OccupancyThr: 0.6
+
+# Visualization
+RGBD/CreateOccupancyGrid: true
+RGBD/ProximityBySpace: true
+
