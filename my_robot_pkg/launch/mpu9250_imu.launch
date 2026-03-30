@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="rosserial_python" type="serial_node.py" name="mpu9250_imu_driver" args=" /dev/ttyUSB1" output="screen" />
+	<node pkg="my_robot_pkg" type="mpu9250_imu_converter_node" name="mpu9250_imu_converter" output="screen">
+		<remap from="~/imu" to="/imu/data"/>
+	</node>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find my_robot_pkg)/rviz/mpu9250_imu.rviz"/>
+</launch>

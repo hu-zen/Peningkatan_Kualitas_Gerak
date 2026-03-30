@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="image_proc" type="image_proc" name="image_proc_rgb" ns="/camera/rgb" output="screen">
+    <param name="queue_size" value="5"/>
+  </node>
+
+  <node pkg="image_transport" type="republish" name="republish_rgb"
+        args="raw in:=/camera/rgb/image_raw out:=/camera/rgb/image_color" output="screen"/>
+</launch>
+

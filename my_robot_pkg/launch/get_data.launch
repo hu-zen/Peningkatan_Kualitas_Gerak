@@ -1,0 +1,13 @@
+<launch>
+    <!-- Menjalankan node pertama -->
+    <node name="node1" pkg="my_robot_pkg" type="gt_robot_pose_logger.py" output="screen" />
+
+    <!-- Menjalankan node kedua -->
+    <node name="node2" pkg="my_robot_pkg" type="gt_robot_pose_pub.py" output="screen" />
+
+    <!-- Menjalankan node ketiga -->
+    <node name="node3" pkg="my_robot_pkg" type="marker.py" output="screen" />
+
+    <!-- Menjalankan node keemapt -->
+    <node name="node4" pkg="my_robot_pkg" type="est_robot_pose_logger.py" output="screen" />
+</launch>
