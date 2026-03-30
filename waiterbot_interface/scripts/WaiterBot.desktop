@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WaiterBot GUI
+Comment=Jalankan Robot Waiter
+Exec=gnome-terminal -- /home/iascr/catkin_ws/src/waiterbot_interface/scripts/jalankan_robot.sh
+Icon=/home/iascr/catkin_ws/src/waiterbot_interface/scripts/ybot.png
+Path=/home/iascr/catkin_ws/src/waiterbot_interface/scripts/
+Terminal=false
+StartupNotify=false
